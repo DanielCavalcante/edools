@@ -1,6 +1,7 @@
 class Escola < ActiveRecord::Base
 
   has_many :cursos, :dependent => :destroy
+  has_many :alunos
 
   validates_presence_of :nome, :subdominio, :email
   validates_format_of :subdominio, with: SUBDOMAIN_FORMAT

@@ -24,6 +24,7 @@ class AlunosController < ApplicationController
   def create
     @cursos = Curso.all
     @aluno = Aluno.new(aluno_params)
+    @aluno.escola = Escola.find(@aluno.curso.escola.id)
     respond_to do |format|
       if @aluno.save
         format.html { redirect_to @aluno, notice: 'Aluno was successfully created.' }
@@ -58,6 +59,6 @@ class AlunosController < ApplicationController
     end
 
     def aluno_params
-      params.require(:aluno).permit(:nome, :email, :curso_id, :ativo)
+      params.require(:aluno).permit(:nome, :email, :curso_id, :escola_id, :ativo)
     end
 end

@@ -1,0 +1,23 @@
+<%= render 'shared/notice' %>
+<div class="row">
+  <div class="col-md-12">
+    <div class="row">
+      <div class="col-md-8 pull-left">
+        <%= link_to t('actions.back'), root_path, class: 'btn btn-default' %>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+    <% form_tag(relatorios_path, :method=>'post') do %>
+        <div class="form-group">
+          <%= label_tag :curso_id, class: 'col-md-2 control-label' %>
+          <div class="col-md-6">
+            <%= select_tag :escola_id, options_for_select(@escolas.map{ |e| [e.nome, e.id] }), { class: 'form-control' } %>
+          </div>
+        </div>
+        <%= submit_tag t('actions.save'), class: 'btn btn-success col-md-3 col-md-offset-2' %>
+    <% end %>
+  </div>
+</div>

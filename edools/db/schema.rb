@@ -20,12 +20,14 @@ ActiveRecord::Schema.define(version: 20160610052914) do
     t.string   "nome"
     t.string   "email"
     t.integer  "curso_id",   null: false
+    t.integer  "escola_id",  null: false
     t.boolean  "ativo"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   add_index "alunos", ["curso_id"], name: "index_alunos_on_curso_id", using: :btree
+  add_index "alunos", ["escola_id"], name: "index_alunos_on_escola_id", using: :btree
 
   create_table "cursos", force: :cascade do |t|
     t.string   "titulo"
@@ -53,5 +55,6 @@ ActiveRecord::Schema.define(version: 20160610052914) do
   end
 
   add_foreign_key "alunos", "cursos"
+  add_foreign_key "alunos", "escolas"
   add_foreign_key "cursos", "escolas"
 end

@@ -4,6 +4,7 @@ class CreateAlunos < ActiveRecord::Migration
       t.string :nome
       t.string :email
       t.belongs_to :curso, index: true, foreign_key: true, null: false
+      t.belongs_to :escola, index: true, foreign_key: true, null: false
       t.boolean :ativo
 
       t.timestamps null: false

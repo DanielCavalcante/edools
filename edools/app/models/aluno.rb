@@ -1,10 +1,10 @@
 class Aluno < ActiveRecord::Base
 
-  has_many :curso
-  has_many :alunos
+  belongs_to :escola
+  belongs_to :curso
 
   validates_presence_of :nome, :email
-  validates_associated :curso
+  validates_associated :curso, :escola
   validates_format_of :email, with: EMAIL_FORMAT
 
   def self.search(search)
